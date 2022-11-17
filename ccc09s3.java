@@ -88,6 +88,7 @@ public class ccc09s3 {
 						}
 					}
 					System.out.println(friends);
+					friends = 0;
 				}
 				
 				if(command.equals("f")) {
@@ -95,13 +96,18 @@ public class ccc09s3 {
 					for(int i = 0; i < 50; i++) {
 						if(graph[x][i]){
 							for(int j = 0; j < 50; j++) {
-								if(graph[i][j] && !graph[x][j] && j != x) {
+								if(graph[i][j] && !graph[x][j] && j != x && !visited[j]) {
 									friends++;
+									visited[j] = true;
 								}
 							}
 						}
 					}
+					for(int i = 0; i < 50; i++) {
+						visited[i] = false;
+					}
 					System.out.println(friends);
+					friends = 0;
 				}
 				
 				if(command.equals("s")) {
@@ -126,7 +132,7 @@ public class ccc09s3 {
 					if(step[y] == 0) {
 						System.out.println("Not connected");
 					}else {
-					System.out.println(step[y]);
+						System.out.println(step[y]);
 					}
 					for(int i = 0; i < 50; i++) {
 						visited[i] = false;
