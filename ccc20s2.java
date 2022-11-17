@@ -1,52 +1,51 @@
-import java.util.*;
 import java.io.*;
+import java.util.*;
 
 public class ccc20s2 {
+    public static void main(String[] args)throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        PrintWriter out = new PrintWriter(System.out);
 
-	public static void main(String[] args)throws IOException {
-		// TODO Auto-generated method stub
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st;
-		
-		int M = Integer.parseInt(br.readLine());
-		int N = Integer.parseInt(br.readLine());
-		int[][] rooms = new int[M][N];
-		Queue<Integer> queue = new LinkedList<>();
-		boolean[][] visited = new boolean[M][N];
-		
-		
-		for(int i = 0; i < M; i++) {
-			st = new StringTokenizer(br.readLine());
-			for(int j = 0; j < N; j++) {
-				rooms[i][j] = Integer.parseInt(st.nextToken());
-			}
-		}
-		
-		queue.add(rooms[0][0]);
-		visited[0][0] = true;
-		
-		
-		while(!queue.isEmpty()) {
-			
-			int current = queue.poll();
-			
-			for(int i = 1; i <= M; i++) {
-				for(int j = 1; j <= N; j++) {
-					if(current == i*j && !visited[i-1][j-1]) {
-						visited[i-1][j-1] = true;
-						queue.add(rooms[i-1][j-1]);
-					}
-				}
-			}
-			
-		}
-		
-		if(visited[M-1][N-1]) {
-			System.out.println("yes");
-		}else {
-			System.out.println("no");
-		}
-		
-	}
+        int M = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
+        int[][] graph = new int[M+1][N+1];
+        Queue<Integer> queuex = new LinkedList<>();
+        Queue<Integer> queuey = new LinkedList<>();
+        boolean[][] visited = new boolean[M+1][N+1];
+        
+        for(int i = 1; i <= M; i++){
+            st = new StringTokenizer(br.readLine());
+          for(int j = 1; j <= N ; j++){
+            graph[i][j] = Integer.parseInt(st.nextToken());
+          }
+        }
 
+        queuex.add(M);
+        queuey.add(N);
+        visited[M][N] = true;
+
+        while(!queuex.isEmpty()){
+          int currentx = queuex.poll();
+          int currenty = queuey.poll();
+
+          for(int i = 1; i <= M; i++){
+            for(int j = 1; j <= N; j++){
+              if(graph[i][j] == currentx*currenty && !visited[i][j]){
+                visited[i][j] = true;
+                queuex.add(i);
+                queuey.add(j);
+              }
+            }
+          }
+          if(visited[1][1]){
+            out.println("yes");
+            break;
+          }
+        }
+        if(!visited[1][1]){
+          out.println("no");
+        }
+        out.flush();
+    }
 }
