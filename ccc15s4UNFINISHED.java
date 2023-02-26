@@ -1,3 +1,5 @@
+//14/15 on dmoj (official ccc testcases)
+
 import java.util.*;
 import java.io.*;
 
@@ -19,13 +21,11 @@ public class ccc15s4UNFINISHED {
 		}
 	}
 	
-	public static void dijkstra(ArrayList<edge>[] adj, int[] step, edge current, int hull) { //does not take into account cases where the step value to a node is slower, but is the correct pathway - 14/15 on dmoj (official ccc testcases)
-		for(edge next: adj[current.dest]) {
+	public static void dijkstra(ArrayList<edge>[] adj, int[] step, edge current, int hull) { //does not take into account cases where the step value to a node is slower, but is the correct pathway
+		for(edge next : adj[current.dest]) {
 			if(step[current.dest]+next.weight < step[next.dest] && hull-next.wear > 0) {
 				step[next.dest] = step[current.dest] + next.weight;
-				hull -= next.wear;
-				dijkstra(adj, step, next, hull);
-				hull += next.wear;
+				dijkstra(adj, step, next, hull-next.wear);
 			}
 		}
 	}

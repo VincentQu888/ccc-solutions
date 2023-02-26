@@ -23,8 +23,7 @@
  * 4. now you just need to loop through every necessary node and check if it is in the main path! pretty awesome
  * 
  * 
- * as a side note, the way i removed all unecessary nodes only works with a spanning tree, so if you're ever doing a problem w/o
- * the graph already as a spanning tree, you can just make one with a simple kruskal + dsu
+ * as a side note, the way i removed all unecessary nodes only works with a spanning tree
  */
 
 import java.util.*;
