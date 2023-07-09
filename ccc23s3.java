@@ -40,7 +40,7 @@ public class ccc23s3 {
         	for(int j = 0; j < M; ++j) {
         		if(poster[i][j] != 'a') {
         			poster[i][j] = (char)(counter + 'b');
-        			counter = counter >= 21 ? 0 : counter+1;
+        			counter = counter >= 21 ? 0 : counter+1; //21 is arbitrary number less than 26
         		}
         	}
         	big = big >= 21 ? 0 : big+1;
@@ -135,7 +135,7 @@ public class ccc23s3 {
         		System.out.println();
         	}
         }else {
-        	//System.out.println("IMPOSSIBLE");
+        	System.out.println("IMPOSSIBLE");
         }
     }
 
