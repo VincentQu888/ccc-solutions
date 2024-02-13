@@ -12,11 +12,10 @@ int main() {
     cin.tie(NULL);
     ios_base::sync_with_stdio(false);
 
-    int N, C;
+    int N, C; 
     cin >> N >> C;
 
-    int points[2*N]; int freq[C];
-    fill(freq, freq+C, 0);
+    int points[2*N]; int freq[C]; fill(freq, freq+C, 0);
     for(int i = 0; i < N; ++i){
         cin >> points[i];
         ++freq[points[i]];
@@ -33,7 +32,6 @@ int main() {
             ++l;    
         }
     }
-
     if(C%2 == 0){
         for(int i = 0; i < C/2; ++i) ans -= freq[i] * nC2(freq[i+C/2]) + nC2(freq[i]) * freq[i+C/2];
     }
